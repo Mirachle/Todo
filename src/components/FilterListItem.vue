@@ -18,7 +18,7 @@ export default {
         }
     },
     computed:{
-        className:function(){
+        className(){
             if(this.selected){
                 return "select"
             }

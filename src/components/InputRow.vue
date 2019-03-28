@@ -1,7 +1,7 @@
 <template>
  <input v-model="inputValue" @keyup.enter="$emit('changeValue',inputValue)" :type="inputType" :id="inputId">
 </template>
-    
+
 <script>
 export default {
   name: 'InputRow',
@@ -11,8 +11,6 @@ export default {
         inputId: "task-manager",
         inputValue: ""
       }
-  },
-  methods:{
   }
 };
 </script>

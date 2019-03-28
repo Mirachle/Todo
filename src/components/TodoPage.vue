@@ -1,10 +1,9 @@
 <template>
   <div class="card">
-   <header-comp />
+   <header-comp/>
    <input-row @changeValue="inputChangeValue"/>
-   <filter-comp/>
-   <list-comp :list="list" @deleteItemName="deletion" />
-   
+   <filter-comp @filterType="filtered"/>
+   <list-comp :filterName="filterType" :list="list" @deleteItemName="deletion" />
   </div>
 
 </template>
@@ -17,25 +16,36 @@ import ListComp from '@/components/ListComp'
 
 export default {
   name: 'TodoPage',
+
+  data(){
+      return{
+        list:[{isDone:false, text:"Teendő #1"},{isDone:false, text:"Teendő #2"},{isDone:false, text:"Teendő #3"}],
+        filterType:""
+      }
+    },
+
   components:{
     'header-comp': HeaderComp,
     'input-row': InputRow,
     'filter-comp': FilterComp,
     'list-comp': ListComp
   },
-  props:{
-    list:{
-      default: ["Teendő #1","Teendő #2","Teendő #3"]
-    }
-  },
+
   methods:{
+
     inputChangeValue(value){
-      this.list.push(value)
+      this.list.push({isDone:false, text:value})
     },
+
     deletion(value){
-    this.list.splice(value,1)
+      this.list.splice(value,1)
+    },
+
+    filtered(value){
+      this.filterType=value
+    }
   }
-  },
+
 };
 </script>
 

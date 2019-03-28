@@ -1,7 +1,7 @@
 <template>
   <span :class="className">
-    <ic-done/>
-    {{item}}
+    <ic-done @isDone="isDone"/>
+    {{item.text}}
     <ic-delete @clicked="request"/>
   </span>
 </template>
@@ -15,8 +15,6 @@ export default {
     item: {
       type: String,
       required: true
-    },
-    index:{
     }
   },
   components: {
@@ -31,6 +29,10 @@ export default {
   methods: {
     request() {
       this.$emit("deleteRequest", this.index);
+      //alert(this.index)
+    },
+    isDone(value){
+      this.item.isDone = value
     }
   }
 };

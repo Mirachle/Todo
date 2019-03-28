@@ -14,8 +14,6 @@
 <script>
 export default {
   name: 'IcDelete',
-  prop:{
-  },  
 };
 </script>
 

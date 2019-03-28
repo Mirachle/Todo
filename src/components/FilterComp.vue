@@ -1,7 +1,7 @@
 <template>
 <div>
     <div @click="itemClicked(item,index)" v-for="(item,index) in list"
-        :key="index" style="display:inline-flex;padding:0 10px">
+        :key="index" class="filter">
         <filter-list-item :item="item" :selected="cl(index)"/>
     </div>
 </div>
@@ -33,19 +33,10 @@ export default {
         methods:{
         itemClicked(value,index){
             this.selectedIndex=index
-            this.selectItem=value
+            this.$emit('filterType', value)
         },
         cl(index){
             return this.selectedIndex === index
-        }
-    },
-    computed:{
-        selectedItem(){
-            if(this.selectedIndex === undefined){
-                return "-"
-            }
-            return this.list[this.selectedIndex];
-
         }
     }
 };
@@ -54,5 +45,9 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
+.filter{
+  display:inline-flex;
+  padding:0 10px
+}
 
 </style>

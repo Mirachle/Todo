@@ -5,15 +5,10 @@
 <script>
 export default {
   name: 'HeaderComp',
-  props:{
-      headerText:{
-           type: String,
-          default: "Todo"
-      },
-  },
   data(){
       return {
-          headerClass: "todo-title"
+          headerClass: "todo-title",
+          headerText: "Todo"
       }
   }
 };

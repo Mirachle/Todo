@@ -19,20 +19,24 @@ export default {
     return{
       imagClass : "pipe",
       imagFill: "#ADADAD",
+      isDone: false,
     }
   },
   methods:{
     itemClicked(){
       if(this.imagFill=="#ADADAD"){
         this.imagFill="#00FF00"
+        this.isDone= true
       }else{
         this.imagFill="#ADADAD"
+        this.isDone= false
       }
+      this.$emit('isDone', this.isDone)
     }
   }
 
-  
-  
+
+
 };
 </script>
 
