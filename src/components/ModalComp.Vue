@@ -83,7 +83,6 @@ export default {
   border:none;
   padding: 0px;
   justify-content: center;
-
 }
 
 .modal-body {

@@ -22,7 +22,6 @@ export default {
     "ic-done": IcDone,
     "ic-delete": IcDelete,
     "modal": ModalComp,
-
   },
   data() {
     return {
