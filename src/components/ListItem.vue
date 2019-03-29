@@ -2,7 +2,11 @@
 <div>
   <span :class="className">
     <ic-done @isDone="isDone" :item="item"/>
+<<<<<<< HEAD
     <span @click="showModal = true">{{item.text}}</span>
+=======
+    {{item.text}}
+>>>>>>> 1d2bb1583e5252773d333cb5d2c2c8c5b5e137a2
     <ic-delete @clicked="request"/>
   </span>
 
