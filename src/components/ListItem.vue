@@ -17,7 +17,7 @@ import IcDelete from "@/components/IcDelete";
 import ModalComp from "@/components/ModalComp"
 export default {
   name: "ListItem",
-  props: ["item"],
+  props: ["item", "index"],
   components: {
     "ic-done": IcDone,
     "ic-delete": IcDelete,
