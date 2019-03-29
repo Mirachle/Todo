@@ -23,10 +23,8 @@ export default {
   methods:{
     itemClicked(){
       if(this.item.isDone){
-        this.imagFill="#ADADAD"
         this.item.isDone= false
       }else{
-        this.imagFill="#00FF00"
         this.item.isDone= true
       }
       this.$emit('isDone', this.item.isDone)
