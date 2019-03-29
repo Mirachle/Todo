@@ -5,25 +5,26 @@
         <div class="modal-container">
 
           <div class="modal-header">
-            <slot name="header">
-              default header
-            </slot>
+            <h3>{{hea}}</h3>
           </div>
 
           <div class="modal-body">
+            <div>
+             <h6 style="text-align:left;">Description:</h6>
+            </div>
             <slot name="body">
-              Description: <textarea></textarea>
+              <textarea v-model="currentValue" rows="4" col="12"></textarea>
             </slot>
+            <div>
+              <p style="text-align:left">Deadline:</p>
+            </div>
+            <input type="datetime-local" v-model="myDate" style="width:100%" />
           </div>
 
-          <div class="modal-footer">
-            <slot name="footer">
-              deadline:<br/>
-              <input type=date />
-                <button class="modal-default-button" @click="$emit('close')">
-                OK
-                </button>
-              
+          <div class="modal-footer" style="padding:5px 0px;border:none">           
+            <slot name="footer">              
+              <input type="button" @click="okEvent" value="OK" />
+              <input type="button" @click="$emit('close')" value="Cancel" />
             </slot>
           </div>
         </div>
@@ -35,8 +36,14 @@
 <script>
 export default {
   name: 'ModalComp',
-  props: ["item"],
- 
+  props:["hea","textAreaValue","myDate","currentValue"],
+  methods:{
+    okEvent(){
+      alert("You clicked ok Button");
+      alert(this.currentValue+" "+this.myDate)
+      this.$emit('pressOkButton',this.currentValue,this.myDate)
+    }
+  }
 };
 </script>
 
@@ -44,7 +51,7 @@ export default {
 <style scoped>
 .modal-mask {
   position: fixed;
-  z-index: 9998;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -60,7 +67,7 @@ export default {
 }
 
 .modal-container {
-  width: 300px;
+  width: 400px;
   margin: 0px auto;
   padding: 20px 30px;
   background-color: #fff;
@@ -72,15 +79,40 @@ export default {
 
 .modal-header h3 {
   margin-top: 0;
-  color: #42b983;
+}
+
+.modal-header{
+  border:none;
+  padding: 0px;
+  justify-content: center;
+  
 }
 
 .modal-body {
   margin: 20px 0;
+  padding: 0;
 }
 
 .modal-default-button {
   float: right;
 }
+
+textarea{
+  width: 100%;
+  resize:none;
+}
+input[type=button]{
+  background-color:rgb(7, 180, 248);
+  border: none;
+  color: white;
+}
+
+input[value="Cancel"]{
+  background-color: rgb(121, 120, 120);
+  border: none;
+  color: white;
+}
+
+
 
 </style>

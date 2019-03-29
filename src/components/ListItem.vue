@@ -6,8 +6,7 @@
     <ic-delete @clicked="request"/>
   </span>
 
-  <modal v-if="showModal" @close="showModal = false">
-    <h3 slot="header">custom header</h3>
+  <modal v-if="showModal" @close="showModal = false" :hea="item.text" @pressOkButton="load" :currentValue="taskContent" :myDate="taskDeadLine">
   </modal>
 </div>
 </template>
@@ -23,11 +22,14 @@ export default {
     "ic-done": IcDone,
     "ic-delete": IcDelete,
     "modal": ModalComp,
+    
   },
   data() {
     return {
       className: "item-class",
-      "showModal" : false
+      "showModal" : false,
+      "taskContent": "",
+      "taskDeadLine": ""
     };
   },
   methods: {
@@ -37,6 +39,12 @@ export default {
     },
     isDone(value){
       this.item.isDone = value
+    },
+    load(areaValue,deadLine){
+      this.showModal=false,
+      this.taskContent=areaValue;
+      this.taskDeadLine=deadLine;
+      alert(this.taskContent+" "+this.taskDeadLine);
     }
   }
 };
