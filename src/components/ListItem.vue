@@ -2,12 +2,11 @@
 <div>
   <span :class="className">
     <ic-done @isDone="isDone" :item="item"/>
-    <span @click="showModal = true">{{item.text}}</span>
+    <span @click="[showModal = true, changeClassName('fadeInDown')]">{{item.text}}</span>
     <ic-delete @clicked="request"/>
   </span>
 
-  <modal v-if="showModal" @close="showModal = false">
-    <h3 slot="header">custom header</h3>
+  <modal v-if="showModal" @close="changeClassName('fadeOutDown')" :sendName="effectName" :title="item.text" @pressOkButton="load" :currentValue="taskContent" :myDate="taskDeadLine">
   </modal>
 </div>
 </template>
@@ -23,20 +22,31 @@ export default {
     "ic-done": IcDone,
     "ic-delete": IcDelete,
     "modal": ModalComp,
+
   },
   data() {
     return {
       className: "item-class",
-      "showModal" : false
+      showModal : false,
+      taskContent: "",
+      taskDeadLine: "",
+      effectName: ''
     };
   },
   methods: {
     request() {
       this.$emit("deleteRequest", this.index);
-      //alert(this.index)
     },
     isDone(value){
       this.item.isDone = value
+    },
+    load(areaValue,deadLine){
+      this.effectName ='fadeOutDown'
+      this.taskContent=areaValue
+      this.taskDeadLine=deadLine
+    },
+    changeClassName(value){
+      this.effectName = value
     }
   }
 };

@@ -11,7 +11,9 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "animate.css": "^3.7.0",
     "sweetalert2": "^8.7.0",
+    "vodal": "^2.4.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
   },

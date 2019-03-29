@@ -19,7 +19,6 @@ export default {
   methods: {
     request(value) {
       this.$emit("deleteItemName", value)
-      alert(this.filterName)
     },
     currentFilter(item){
       if(this.filterName == "Done"){
