@@ -1,7 +1,7 @@
 <template>
   <span :class="className">
-    <ic-done @isDone="isDone"/>
-    {{item.text}}
+    <ic-done @isDone="isDone" :item="item"/>
+    {{item}}
     <ic-delete @clicked="request"/>
   </span>
 </template>
@@ -11,12 +11,7 @@ import IcDone from "@/components/IcDone";
 import IcDelete from "@/components/IcDelete";
 export default {
   name: "ListItem",
-  props: {
-    item: {
-      type: String,
-      required: true
-    }
-  },
+  props: ["item"],
   components: {
     "ic-done": IcDone,
     "ic-delete": IcDelete

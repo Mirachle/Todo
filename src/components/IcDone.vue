@@ -1,5 +1,5 @@
 <template>
-<svg @click="itemClicked()" :id="imagClass" width="15px" height="15px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg :class="allTime" @click="itemClicked()" :id="imagClass" width="15px" height="15px" viewBox="0 0 28 28" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="todo-item" transform="translate(-20.000000, -24.000000)" :fill="imagFill" fill-rule="nonzero">
             <g id="ic-done" transform="translate(20.000000, 24.000000)">
@@ -13,30 +13,34 @@
 <script>
 export default {
   name: 'IcDone',
-  prop:{
-  },
+  props: ["item"],
   data(){
     return{
       imagClass : "pipe",
       imagFill: "#ADADAD",
-      isDone: false,
     }
   },
   methods:{
     itemClicked(){
-      if(this.imagFill=="#ADADAD"){
+      if(this.item.isDone){
+        this.imagFill="#ADADAD"
+        this.item.isDone= false
+      }else{
         this.imagFill="#00FF00"
-        this.isDone= true
+        this.item.isDone= true
+      }
+      this.$emit('isDone', this.item.isDone)
+    }
+  },
+  computed:{
+    allTime(){
+      if(this.item.isDone){
+        this.imagFill="#00FF00"
       }else{
         this.imagFill="#ADADAD"
-        this.isDone= false
       }
-      this.$emit('isDone', this.isDone)
     }
   }
-
-
-
 };
 </script>
 
