@@ -8,11 +8,12 @@
 
 <script>
 import ListItem from "@/components/ListItem";
+
 export default {
   name: "ListComp",
   props: ["list", "filterName"],
   components: {
-    "list-item": ListItem
+    "list-item": ListItem,
   },
 
   methods: {

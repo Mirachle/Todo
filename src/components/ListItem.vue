@@ -1,24 +1,33 @@
 <template>
+<div>
   <span :class="className">
     <ic-done @isDone="isDone" :item="item"/>
-    {{item}}
+    <span @click="showModal = true">{{item.text}}</span>
     <ic-delete @clicked="request"/>
   </span>
+
+  <modal v-if="showModal" @close="showModal = false">
+    <h3 slot="header">custom header</h3>
+  </modal>
+</div>
 </template>
 
 <script>
 import IcDone from "@/components/IcDone";
 import IcDelete from "@/components/IcDelete";
+import ModalComp from "@/components/ModalComp"
 export default {
   name: "ListItem",
   props: ["item"],
   components: {
     "ic-done": IcDone,
-    "ic-delete": IcDelete
+    "ic-delete": IcDelete,
+    "modal": ModalComp,
   },
   data() {
     return {
-      className: "item-class"
+      className: "item-class",
+      "showModal" : false
     };
   },
   methods: {
