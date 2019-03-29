@@ -1,7 +1,7 @@
 <template>
   <span :class="className">
     <ic-done @isDone="isDone" :item="item"/>
-    {{item}}
+    {{item.text}}
     <ic-delete @clicked="request"/>
   </span>
 </template>
