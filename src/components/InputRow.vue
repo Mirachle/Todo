@@ -1,7 +1,7 @@
 <template>
   <input
     v-model="inputValue"
-    @keyup.enter="$emit('changeValue',inputValue)"
+    @keyup.enter="entered"
     :type="inputType"
     :id="inputId"
   >
@@ -16,6 +16,12 @@ export default {
       inputId: "task-manager",
       inputValue: ""
     };
+  },
+  methods:{
+    entered(){
+      this.$emit('changeValue',this.inputValue)
+      this.inputValue = ""
+    }
   }
 };
 </script>
