@@ -1,51 +1,56 @@
 <template>
-<div>
-  <span :class="className">
-    <ic-done @isDone="isDone" :item="item"/>
-    <span @click="[showModal = true, changeClassName('fadeInDown')]">{{item.text}}</span>
-    <ic-delete @clicked="request"/>
-  </span>
+  <div>
+    <span :class="className">
+      <ic-done  :item="item"/>
+      <span @click="[showModal = true, changeClassName('fadeInDown')]">{{item.text}}</span>
+      <ic-delete @clicked="request"/>
+    </span>
 
-  <modal v-if="showModal" @close="changeClassName('fadeOutDown')" :sendName="effectName" :title="item.text" @pressOkButton="load" :currentValue="taskContent" :myDate="taskDeadLine">
-  </modal>
-</div>
+    <modal
+      v-if="showModal"
+      @close="changeClassName('fadeOutDown')"
+      :sendName="effectName"
+      :title="item.text"
+      @pressOkButton="load"
+      :currentValue="item.task"
+      :myDate="item.deadLine"
+    ></modal>
+  </div>
 </template>
 
 <script>
 import IcDone from "@/components/IcDone";
 import IcDelete from "@/components/IcDelete";
-import ModalComp from "@/components/ModalComp"
+import ModalComp from "@/components/ModalComp";
 export default {
   name: "ListItem",
   props: ["item", "index"],
   components: {
     "ic-done": IcDone,
     "ic-delete": IcDelete,
-    "modal": ModalComp,
+    "modal": ModalComp
   },
   data() {
     return {
       className: "item-class",
-      showModal : false,
-      taskContent: "",
-      taskDeadLine: "",
-      effectName: ''
+      showModal: false,
+      effectName: ""
     };
   },
   methods: {
     request() {
-      this.$emit("deleteRequest", this.index);
+      this.$emit("deleteRequest", this.item);
     },
-    isDone(value){
-      this.item.isDone = value
+  /* isDone(value) {
+      this.item.isDone = value;
+    },*/
+    load(areaValue, deadLine) {
+      this.effectName = "fadeOutDown";
+      this.item.task = areaValue;
+      this.item.deadLine = deadLine;
     },
-    load(areaValue,deadLine){
-      this.effectName ='fadeOutDown'
-      this.taskContent=areaValue
-      this.taskDeadLine=deadLine
-    },
-    changeClassName(value){
-      this.effectName = value
+    changeClassName(value) {
+      this.effectName = value;
     }
   }
 };

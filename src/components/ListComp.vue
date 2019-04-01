@@ -13,29 +13,33 @@ export default {
   name: "ListComp",
   props: ["list", "filterName"],
   components: {
-    "list-item": ListItem,
+    "list-item": ListItem
   },
 
   methods: {
     request(value) {
-      this.$emit("deleteItemName", value)
-    },
-    currentFilter(item){
-      if(this.filterName == "Done"){
-        return item.isDone
-        }
-      else if(this.filterName == "Pending"){
-        return !item.isDone
+      var i;
+      for(i=0;i<this.list.length;i++){
+        if(this.list[i].text == value.text)
+          break;
       }
-      return true
+      this.$emit("deleteItemName", i);
+    },
+    currentFilter(item) {
+      if (this.filterName == "Done") {
+        return item.isDone;
+      } else if (this.filterName == "Pending") {
+        return !item.isDone;
+      }
+      return true;
     }
   },
 
   computed: {
-  filteredList(){
-    return this.list.filter(this.currentFilter)
+    filteredList() {
+      return this.list.filter(this.currentFilter);
+    }
   }
-}
 };
 </script>
 

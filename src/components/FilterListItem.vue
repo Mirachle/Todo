@@ -1,31 +1,30 @@
 <template>
-    <div>
+  <div>
     <span :class="className">{{item}}</span>
-   </div>
+  </div>
 </template>
 
 <script>
 export default {
-  name: 'FilterListItem',
-  props:{
-        selected:{
-            type: Boolean,
-            required: true
-        },
-        item:{
-            type:String,
-            required: true
-        }
+  name: "FilterListItem",
+  props: {
+    selected: {
+      type: Boolean,
+      required: true
     },
-    computed:{
-        className(){
-            if(this.selected){
-                return "select"
-            }
-            return ""
-        }
+    item: {
+      type: String,
+      required: true
     }
-
+  },
+  computed: {
+    className() {
+      if (this.selected) {
+        return "select";
+      }
+      return "";
+    }
+  }
 };
 </script>
 
@@ -33,7 +32,7 @@ export default {
 .select {
   color: green;
 }
-span{
-    font-weight: bold;
+span {
+  font-weight: bold;
 }
 </style>
