@@ -6,7 +6,7 @@
     <ic-delete @clicked="request"/>
   </span>
 
-  <modal v-if="showModal" @close="changeClassName('fadeOutDown')" :sendName="effectName" :title="item.text" @pressOkButton="load" :currentValue="taskContent" :myDate="taskDeadLine">
+  <modal v-if="showModal" @close="changeClassName('fadeOutDown')" :sendName="effectName" :title="item.text" @pressOkButton="load">
   </modal>
 </div>
 </template>
@@ -27,8 +27,6 @@ export default {
     return {
       className: "item-class",
       showModal : false,
-      taskContent: "",
-      taskDeadLine: "",
       effectName: ''
     };
   },
@@ -41,8 +39,6 @@ export default {
     },
     load(areaValue,deadLine){
       this.effectName ='fadeOutDown'
-      this.taskContent=areaValue
-      this.taskDeadLine=deadLine
     },
     changeClassName(value){
       this.effectName = value

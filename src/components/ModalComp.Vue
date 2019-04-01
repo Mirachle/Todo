@@ -23,7 +23,7 @@
 
           <div class="modal-footer" style="padding:5px 0px;border:none">
             <slot name="footer">
-              <input type="button" @click="okEvent" value="OK" />
+              <input type="button" @click="$emit('close')" value="OK" />
               <input type="button" @click="$emit('close')" value="Cancel" />
             </slot>
           </div>
@@ -36,12 +36,7 @@
 <script>
 export default {
   name: 'ModalComp',
-  props:["title", "textAreaValue", "myDate", "currentValue", "sendName"],
-  methods:{
-    okEvent(){
-      this.$emit('pressOkButton',this.currentValue,this.myDate)
-    }
-  }
+  props:["title", "sendName"]
 };
 </script>
 
