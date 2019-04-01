@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div @click="itemClicked(item,index)" v-for="(item,index) in list" :key="index" class="filter">
+    <h4 @click="itemClicked(item,index)" v-for="(item,index) in list" :key="index" class="filter">
       <filter-list-item :item="item" :selected="cl(index)"/>
-    </div>
+    </h4>
   </div>
 </template>
 
@@ -46,5 +46,6 @@ export default {
 .filter {
   display: inline-flex;
   padding: 0 10px;
+  cursor: pointer;
 }
 </style>

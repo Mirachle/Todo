@@ -16,11 +16,11 @@
           <div>
             <p class="left">Deadline:</p>
           </div>
-          <input type="time" v-model="myDate" style="width:100%">
+          <input type="time" v-model="myDate" style="width:100%; cursor: pointer;">
         </div>
 
         <div class="modal-footer" style="padding:5px 0px;border:none">
-          <input type="button" @click="okEvent" value="OK">
+          <input type="button" @click="okEvent" value="Ok">
           <input type="button" @click="$emit('close')" value="Cancel">
         </div>
       </div>
@@ -93,17 +93,33 @@ textarea {
 }
 input[type="button"] {
   background-color: rgb(7, 180, 248);
-  border: none;
+  border: 2px solid rgb(7, 180, 248);
   color: white;
+  border-radius: 10%;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+input[value="Ok"]:hover{
+  background-color: white;
+  color: black;
+  border: 2px solid rgb(7, 180, 248);
 }
 
 input[value="Cancel"] {
   background-color: rgb(121, 120, 120);
-  border: none;
+  border: 2px solid rgb(121, 120, 120);
   color: white;
 }
 
+input[value="Cancel"]:hover {
+  background-color: white;
+  border: 2px solid rgb(121, 120, 120);
+  color: black;
+}
+
 .left {
+  margin-top: 5vh;
   text-align: left;
 }
 </style>

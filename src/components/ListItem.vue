@@ -2,7 +2,7 @@
   <div>
     <span :class="className">
       <ic-done  :item="item"/>
-      <span @click="[showModal = true, changeClassName('fadeInDown')]">{{item.text}}</span>
+      <span @click="[showModal = true, changeClassName('fadeInDown')]"><item-text>{{item.text}}</item-text></span>
       <ic-delete @clicked="request"/>
     </span>
 
@@ -68,7 +68,13 @@ export default {
   position: relative;
   box-shadow: 0px 0px 10px 5px #bebebe;
 }
+
 span {
   font-weight: bold;
 }
+
+item-text{
+  cursor: pointer;
+}
+
 </style>

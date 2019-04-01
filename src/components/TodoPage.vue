@@ -57,5 +57,6 @@ export default {
   vertical-align: center;
   border: none;
   background-color: #e0e0e0;
+  cursor: default;
 }
 </style>

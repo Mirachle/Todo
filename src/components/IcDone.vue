@@ -51,7 +51,7 @@ export default {
   computed: {
     allTime() {
       if (this.item.isDone) {
-        this.imagFill = "#00FF00";
+        this.imagFill = "green";
       } else {
         this.imagFill = "#ADADAD";
       }
