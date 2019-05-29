@@ -19,8 +19,10 @@ export default {
   },
   methods:{
     entered(){
+      if(this.inputValue != ("" | " ")){
       this.$emit('changeValue',this.inputValue)
       this.inputValue = ""
+      }
     }
   }
 };

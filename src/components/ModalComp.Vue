@@ -11,7 +11,7 @@
             <h6 class="left">Description:</h6>
           </div>
 
-          <textarea v-model="currentValue" rows="4" col="12"></textarea>
+          <textarea v-model="currentValue"></textarea>
 
           <div>
             <p class="left">Deadline:</p>
